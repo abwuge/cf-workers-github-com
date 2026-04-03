@@ -1,34 +1,35 @@
-# cf-workers-github-com
+<h1 align="center">GitHub 代理</h1>
+<p align="center">[English](README_EN.md)</p>
 
-A Cloudflare Worker that proxies GitHub for accelerated access and git clone.
+利用 Cloudflare Workers 代理 GitHub，加速访问和 git clone。
 
-## Usage
+## 用法
 
-Prepend your custom domain (e.g. `gh.example.com`) to any GitHub URL:
+在任意 GitHub 链接前加上你的自定义域名（例如`gh.example.com`）即可：
 
-- **Web**: `https://gh.example.com/https://github.com/user/repo`
-- **Git Clone**: `git clone https://gh.example.com/https://github.com/user/repo.git`
-- **Raw files**: `https://gh.example.com/https://raw.githubusercontent.com/user/repo/main/file.txt`
-- **Releases**: `https://gh.example.com/https://github.com/user/repo/releases/download/v1.0/file.tar.gz`
+- **网页加速**: `https://gh.example.com/https://github.com/root-project/root`
+- **Git Clone**: `git clone https://gh.example.com/https://github.com/root-project/root.git`
+- **Raw 文件**: `https://gh.example.com/https://raw.githubusercontent.com/user/repo/main/file.txt`
+- **Release 下载**: `https://gh.example.com/https://github.com/user/repo/releases/download/v1.0/file.tar.gz`
 
-## Supported GitHub Domains
+## 支持的 GitHub 域名
 
-See [`ALLOWED_HOSTS`](src/index.js#L4) in the source code.
+详见源码中的 [`ALLOWED_HOSTS`](src/index.js#L4)。
 
-## Deploy
+## 部署
 
 ### Cloudflare Workers Builds
 
-1. Fork this repository
-2. In Cloudflare Dashboard, go to Workers & Pages → Create → Connect to Git
-3. Select your repo, set framework to None, and deploy
-4. Bind a custom domain: Settings → Domains & Routes → Custom Domains
+1. Fork 本仓库到你的 GitHub 账号
+2. 在 Cloudflare Dashboard 中进入 Workers & Pages → Create → Connect to Git
+3. 选择你的仓库，框架选择 None，部署即可
+4. 绑定自定义域名：Settings → Domains & Routes → Custom Domains
 
-## Development
+## 开发测试
 
 ```bash
 npm install
 npm run dev
 ```
 
-Local dev server runs at `http://localhost:8787`.
+本地开发服务器默认运行在 `http://localhost:8787`。
