@@ -1,5 +1,5 @@
 <h1 align="center">GitHub Proxy</h1>
-<p align="center"><a href="README.md">中文</a></p>
+<p align="center"><a href=".">中文</a></p>
 
 A Cloudflare Worker that proxies GitHub for accelerated access and git clone.
 
