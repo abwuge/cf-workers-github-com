@@ -1,0 +1,13 @@
+{
+  "name": "cf-workers-github-com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker proxy for GitHub",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

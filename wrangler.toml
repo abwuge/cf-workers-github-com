@@ -1,0 +1,7 @@
+name = "cf-workers-github-com"
+main = "src/index.js"
+compatibility_date = "2026-04-03"
+
+# 自定义域名配置：在 Cloudflare Dashboard 中绑定你的自定义域名
+# 例如 gh.example.com -> 此 Worker
+# 参考: https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
