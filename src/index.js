@@ -33,6 +33,12 @@ export default {
       targetUrl = "https://" + targetUrl;
     }
 
+    // 如果路径不以协议开头，则默认代理到 github.com
+    // 这样 JS 动态发起的相对路径请求也能正确代理
+    if (!/^https?:\/\//.test(targetUrl)) {
+      targetUrl = "https://github.com/" + targetUrl;
+    }
+
     // 验证目标 URL 是否为合法的 GitHub 域名
     let parsedTarget;
     try {
