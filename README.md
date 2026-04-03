@@ -1,5 +1,5 @@
 <h1 align="center">GitHub 代理</h1>
-<p align="center">[English](README_EN.md)</p>
+<p align="center"><a href="README_EN.md">English</a></p>
 
 利用 Cloudflare Workers 代理 GitHub，加速访问和 git clone。
 
