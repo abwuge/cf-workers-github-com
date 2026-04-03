@@ -56,6 +56,7 @@ export default {
       "objects.githubusercontent.com",
       "codeload.github.com",
       "releases.githubusercontent.com",
+      "release-assets.githubusercontent.com",
       "cloud.githubusercontent.com",
       "avatars.githubusercontent.com",
       "private-user-images.githubusercontent.com",
