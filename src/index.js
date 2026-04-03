@@ -127,6 +127,7 @@ export default {
     if (contentType.includes("text/html")) {
       let body = await response.text();
       const proxyOrigin = url.origin;
+      const targetOrigin = parsedTarget.origin; // e.g. https://github.com
 
       // 改写常见的 GitHub 绝对链接
       for (const host of allowedHosts) {
@@ -139,6 +140,13 @@ export default {
           `${proxyOrigin}/https://${host}`
         );
       }
+
+      // 改写相对路径：href="/xxx" src="/xxx" action="/xxx"
+      // 将其改写为 href="/https://github.com/xxx" 等，使浏览器通过代理访问
+      body = body.replace(
+        /((?:href|src|action)\s*=\s*["'])\/(?!\/)/g,
+        `$1/${targetOrigin}/`
+      );
 
       return new Response(body, {
         status: response.status,
