@@ -21,38 +21,25 @@
 - `objects.githubusercontent.com`
 - `codeload.github.com`
 - `releases.githubusercontent.com`
+- `release-assets.githubusercontent.com`
 - `cloud.githubusercontent.com`
 - `avatars.githubusercontent.com`
+- `private-user-images.githubusercontent.com`
 
 ## 部署
 
-### 1. 安装依赖
+### Cloudflare Workers Builds
+
+1. Fork 本仓库到你的 GitHub 账号
+2. 在 Cloudflare Dashboard 中进入 Workers & Pages → Create → Connect to Git
+3. 选择你的仓库，框架选择 None，部署即可
+4. 绑定自定义域名：Settings → Domains & Routes → Custom Domains
+
+## 开发测试
 
 ```bash
 npm install
-```
-
-### 2. 本地开发
-
-```bash
 npm run dev
 ```
 
-### 3. 部署到 Cloudflare
-
-```bash
-npm run deploy
-```
-
-### 4. 绑定自定义域名
-
-在 Cloudflare Dashboard 中：
-1. 进入 Workers & Pages → 选择此 Worker
-2. Settings → Triggers → Custom Domains
-3. 添加你的自定义域名（如 `gh.example.com`）
-
-> 确保该域名已在 Cloudflare 中托管 DNS。
-
-## CI/CD (Workers Builds)
-
-此项目已连接 Git 仓库，推送到 `main` 分支时会自动部署。
+本地开发服务器默认运行在 `http://localhost:8787`。
