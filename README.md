@@ -12,6 +12,10 @@
 - **Raw 文件**: `https://gh.example.com/https://raw.githubusercontent.com/user/repo/main/file.txt`
 - **Release 下载**: `https://gh.example.com/https://github.com/user/repo/releases/download/v1.0/file.tar.gz`
 
+## 限制
+
+由于 Cloudflare Workers 仅支持 HTTP/HTTPS 协议，无法代理 SSH 连接（`git@github.com`），请使用 HTTPS 方式。
+
 ## 支持的 GitHub 域名
 
 详见源码中的 [`ALLOWED_HOSTS`](src/index.js#L4)。

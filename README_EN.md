@@ -12,6 +12,10 @@ Prepend your custom domain (e.g. `gh.example.com`) to any GitHub URL:
 - **Raw files**: `https://gh.example.com/https://raw.githubusercontent.com/user/repo/main/file.txt`
 - **Releases**: `https://gh.example.com/https://github.com/user/repo/releases/download/v1.0/file.tar.gz`
 
+## Limitations
+
+Cloudflare Workers only support HTTP/HTTPS. SSH connections (`git@github.com`) cannot be proxied — use HTTPS instead.
+
 ## Supported GitHub Domains
 
 See [`ALLOWED_HOSTS`](src/index.js#L4) in the source code.
