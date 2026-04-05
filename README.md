@@ -37,3 +37,7 @@ npm run dev
 ```
 
 本地开发服务器默认运行在 `http://localhost:8787`。
+
+## 更新日志
+
+详见 [CHANGELOG](CHANGELOG.md)。

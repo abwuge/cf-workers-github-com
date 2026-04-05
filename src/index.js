@@ -14,6 +14,8 @@ const ALLOWED_HOSTS = [
   "cloud.githubusercontent.com",
   "avatars.githubusercontent.com",
   "private-user-images.githubusercontent.com",
+  "github-cloud.githubusercontent.com",
+  "github-cloud.s3.amazonaws.com",
 ];
 
 const COOKIE_NAME = "ghproxy";
@@ -157,6 +159,39 @@ async function proxyRequest(request, proxyUrl, targetUrl) {
   responseHeaders.delete("X-Frame-Options");
 
   const contentType = responseHeaders.get("Content-Type") || "";
+
+  // Rewrite LFS batch API JSON responses to proxy download/upload/verify URLs
+  if (contentType.includes("application/vnd.git-lfs+json") || contentType.includes("application/json")) {
+    const url = targetUrl.toString();
+    if (url.includes("/info/lfs/")) {
+      let body = await response.text();
+      try {
+        const json = JSON.parse(body);
+        if (json.objects) {
+          const proxyOrigin = proxyUrl.origin;
+          for (const obj of json.objects) {
+            if (!obj.actions) continue;
+            for (const action of Object.values(obj.actions)) {
+              if (action.href) {
+                try {
+                  const hrefUrl = new URL(action.href);
+                  if (ALLOWED_HOSTS.includes(hrefUrl.hostname)) {
+                    action.href = `${proxyOrigin}/${action.href}`;
+                  }
+                } catch {}
+              }
+            }
+          }
+          body = JSON.stringify(json);
+        }
+      } catch {}
+      return new Response(body, {
+        status: response.status,
+        headers: responseHeaders,
+      });
+    }
+  }
+
   if (contentType.includes("text/html")) {
     let body = await response.text();
     const proxyOrigin = proxyUrl.origin;

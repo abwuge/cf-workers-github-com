@@ -37,3 +37,7 @@ npm run dev
 ```
 
 Local dev server runs at `http://localhost:8787`.
+
+## Changelog
+
+See [CHANGELOG](CHANGELOG.md).
